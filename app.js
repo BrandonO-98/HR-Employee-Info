@@ -94,7 +94,8 @@ wrapAsync(async (req,res,next)=> {
     newEmployee.images = req.files.image.map(file => 
       ({url: file.path, filename: file.filename}))
     }
-    if (req.files.documents) {
+    console.log()
+    if (req.files.document) {
     newEmployee.documents = req.files.document.map(file => 
       ({url: file.path, filename: file.filename, originalName: file.originalname, size: file.size}))
     }
