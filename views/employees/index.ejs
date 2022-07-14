@@ -1,0 +1,38 @@
+<% layout('boilerplate') %> 
+
+<h1><%= title %> Employees</h1>
+<div>
+  <a href="/employees/new">Add a new employee</a>
+</div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+<% for( let employee of employees ) { %>
+
+    <div class="col">
+      <div class="card mb-3" style="width: 14rem; ">
+        
+        <% if (employee.images.length) { %>
+          <img src="<%= employee.images[0].url %> " alt="" class="img-fluid"
+          style="height: 13rem; object-fit: cover">
+        <% } else { %>
+          <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" 
+          alt="" class="img-fluid" style="height: 13rem; object-fit: cover">
+        <% } %>
+
+        <div class="card-body">
+          <h5 class="card-title"><%= employee.name %> </h5>
+          <p class="card-text"><%= employee.employeeId %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= employee.department %></li>
+          <li class="list-group-item text-primary"><%= employee.email %></li>
+        </ul>
+        <div class="card-body">
+          <a href="/employees/<%= employee._id %> " 
+            class="btn btn-success">View Profile</a>
+        </div>
+      </div>
+    </div>
+
+<% } %>
+</div>

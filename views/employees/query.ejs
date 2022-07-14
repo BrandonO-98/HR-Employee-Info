@@ -1,0 +1,45 @@
+<% layout('boilerplate') %> 
+<div class="row">
+  <h1 class="text-center">Find Employee</h1>
+  <div class="col-6 offset-3">
+    <form action="/employees" method="GET" class="form">
+      
+      <div class="mb-3">
+        <label class="form-label" for="name">Full Name</label>
+        <input class="form-control" type="text" name="employee[name]" id="name">
+      </div>
+
+      <div class="mb-3">
+        <label for="employeeId">Employee Number</label>
+        <div class="input-group">
+          <span class="input-group-text">#</span>
+          <input type="text" class="form-control" placeholder="000000"
+          id="employeeId" name="employee[employeeId]" >
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="department">Department</label>
+        <input class="form-control" type="text" name="employee[department]" 
+        id="department" >
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="employmentStatus">Employment Status</label>
+        <input class="form-control" type="text" name="employee[employmentStatus]" 
+        id="employmentStatus" >
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="email">Email Address</label>
+        <input class="form-control" type="text" name="employee[email]" 
+        id="email" >
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-success">Search</button>
+      </div>
+    </form>
+    <a href="/employees">Cancel</a>
+  </div>
+</div>

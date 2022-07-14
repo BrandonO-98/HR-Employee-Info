@@ -1,0 +1,76 @@
+<% layout('boilerplate') %> 
+<div class="row">
+  <h1 class="text-center">New Employee</h1>
+  <div class="col-6 offset-3">
+    <form action="/employees" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+      
+      <div class="mb-3">
+        <label class="form-label" for="name">Full Name</label>
+        <input class="form-control" type="text" name="employee[name]" id="name" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="employeeId">Employee Number</label>
+        <div class="input-group">
+          <span class="input-group-text">#</span>
+          <input type="text" class="form-control" placeholder="000000"
+          id="employeeId" name="employee[employeeId]" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="department">Department</label>
+        <input class="form-control" type="text" name="employee[department]" 
+        id="department" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="employmentStatus">Employment Status</label>
+        <input class="form-control" type="text" name="employee[employmentStatus]" 
+        id="employmentStatus" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="email">Email Address</label>
+        <input class="form-control" type="text" name="employee[email]" 
+        id="email" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="image">Images</label>
+        <div class="input-group">
+          <input type="file" name="image" class="form-control" id="image" multiple 
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="document">Documents</label>
+        <div class="input-group">
+          <input type="file" name="document" class="form-control" id="document" multiple 
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-success">Add employee</button>
+      </div>
+    </form>
+    <a href="/employees">Cancel</a>
+  </div>
+</div>

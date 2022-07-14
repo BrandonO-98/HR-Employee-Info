@@ -1,0 +1,105 @@
+<% layout('boilerplate') %> 
+<div class="row">
+  <h1 class="text-center">Edit Employee Profile</h1>
+  <div class="col-6 offset-3">
+    <form action="/employees/<%= editEmployee.id %>?_method=PUT" method="POST" 
+      novalidate enctype="multipart/form-data" class="validated-form">
+
+      <div class="mb-3">
+        <label class="form-label" for="name">Full Name</label>
+        <input class="form-control" type="text" name="employee[name]" id="name" 
+        value="<%= editEmployee.name %>" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="employeeId">Employee Number</label>
+        <div class="input-group">
+          <span class="input-group-text">#</span>
+          <input type="text" class="form-control" placeholder="000000" id="employeeId" 
+          name="employee[employeeId]" value="<%= editEmployee.employeeId %>" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="department">Department</label>
+        <input class="form-control" type="text" name="employee[department]" 
+        id="department" value="<%= editEmployee.department %>" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="employmentStatus">Employment Status</label>
+        <input class="form-control" type="text" name="employee[employmentStatus]" 
+        id="employmentStatus" value="<%= editEmployee.employmentStatus %>" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="email">Email Address</label>
+        <input class="form-control" type="text" name="employee[email]" 
+        id="email" value="<%= editEmployee.email %>" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="image">Add Images</label>
+        <div class="input-group">
+          <input type="file" name="image" class="form-control" id="image" multiple 
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        </div>
+      </div>
+      
+      <% if (editEmployee.images.length>0) { %>
+        <div class="mb-3">
+          <% editEmployee.images.forEach((image, i) => { %>
+            <img src="<%= image.url %>" class="img-thumbnail"
+            style="height: 5rem; object-fit: cover">
+            <div class="form-check-inline">
+              <input type="checkbox" name="deleteImages[]" id="image-<%= i %>" 
+              value="<%= image.filename %>">
+            </div>
+            <label for="image-<%= i %>">Delete?</label>
+            <% }) %>
+        </div>
+      <% } %>
+
+      <div class="mb-3">
+        <label class="form-label" for="document">Add Documents</label>
+        <div class="input-group">
+          <input type="file" name="document" class="form-control" id="document" multiple 
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        </div>
+      </div>
+
+      <% if (editEmployee.documents.length>0) { %>
+        <div class="mb-3">
+          <% editEmployee.documents.forEach((doc, i) => { %>
+            <p class="m-0"><%= doc.originalName %> </p>
+            <div class="form-check-inline mb-3">
+              <input type="checkbox" name="deleteDocs[]" id="doc-<%= i %>" 
+              value="<%= doc.filename %>">
+            </div>
+            <label for="doc-<%= i %>">Delete?</label>
+            <% }) %>
+        </div>
+      <% } %>
+
+      <div class="mb-3">
+        <button class="btn btn-success">Edit employee</button>
+      </div>
+    </form>
+    <a href="/employees">Cancel</a>
+  </div>
+</div>
